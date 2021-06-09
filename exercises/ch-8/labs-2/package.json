@@ -1,5 +1,5 @@
 {
-  "name": "labs-1",
+  "name": "labs-2",
   "version": "1.0.0",
   "description": "",
   "main": "app.js",
@@ -18,9 +18,9 @@
     "fastify": "^3.0.0",
     "fastify-autoload": "^3.3.1",
     "fastify-cli": "^2.12.0",
+    "fastify-http-proxy": "^5.0.0",
     "fastify-plugin": "^3.0.0",
-    "fastify-sensible": "^3.1.1",
-    "got": "^11.8.2"
+    "fastify-sensible": "^3.1.0"
   },
   "devDependencies": {
     "tap": "^15.0.9"
