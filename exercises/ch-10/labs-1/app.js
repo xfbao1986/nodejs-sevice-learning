@@ -9,6 +9,17 @@ var usersRouter = require('./routes/users');
 
 var app = express();
 
+app.use(function(req, res, next) {
+    console.log(req.socket.remoteAddress)
+    if (req.socket.remoteAddress === '111.34.55.211') {
+        const e = new Error('forbidden');
+        e.status = 403;
+        next(e);
+        return;
+    }
+    next();
+});
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
