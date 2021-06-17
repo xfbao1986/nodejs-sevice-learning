@@ -20,51 +20,51 @@ module.exports = async (fastify, opts) => {
     })
 
     fastify.post('/:id/update', async (req, reply) => {
-      try {
-        const { id } = req.params
-        const { data } = req.body
-        await update(id, data)
-        reply.code(204)
-      } catch (e) {
-        if (e.message === 'not found') throw notFound()
-        throw e
-      }
+        try {
+            const { id } = req.params
+            const { data } = req.body
+            await update(id, data)
+            reply.code(204)
+        } catch (e) {
+            if (e.message === 'not found') throw notFound()
+            throw e
+        }
     })
 
     fastify.put('/:id', async (req, reply) => {
-      const { id } = req.params
-      const { data } = req.body
-      try {
-        await create(id, data)
-        reply.code(201)
-        return { id }
-      } catch (e) {
-        if (e.message === 'resource exists') {
-          await update(id, data)
-          reply.code(204)
-        } else throw e
-      }
+        const { id } = req.params
+        const { data } = req.body
+        try {
+            await create(id, data)
+            reply.code(201)
+            return { id }
+        } catch (e) {
+            if (e.message === 'resource exists') {
+                await update(id, data)
+                reply.code(204)
+            } else throw e
+        }
     })
 
     fastify.get('/:id', async (req, reply) => {
-      try {
-        const { id } = req.params
-        return await read(id)
-      } catch (e) {
-        if (e.message === 'not found') throw notFound()
-        throw e
-      }
+        try {
+            const { id } = req.params
+            return await read(id)
+        } catch (e) {
+            if (e.message === 'not found') throw notFound()
+            throw e
+        }
     })
 
     fastify.delete('/:id', async (req, reply) => {
-      try {
-        const { id } = req.params
-        await del(id)
-        reply.code(204)
-      } catch (e) {
-        if (e.message === 'not found') throw notFound()
-        throw e
-      }
+        try {
+            const { id } = req.params
+            await del(id)
+            reply.code(204)
+        } catch (e) {
+            if (e.message === 'not found') throw notFound()
+            throw e
+        }
 
     })
 }
