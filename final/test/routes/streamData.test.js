@@ -3,11 +3,11 @@
 const { test } = require('tap')
 const { build } = require('../helper')
 
-test('default root route', async (t) => {
+test('example is loaded', async (t) => {
   const app = build(t)
 
   const res = await app.inject({
-    url: '/'
+    url: '/streamData'
   })
-  t.match(res.payload, /hello/)
+  t.match(res.payload, /this<br>is<br>a<br>stream<br>of<br>data/)
 })
