@@ -8,9 +8,20 @@ const dev = process.env.NODE_ENV != 'production'
 const fastifyStatic = dev && require('fastify-static')
 const pointOfView = require('point-of-view')
 const handlebars = require('handlebars')
+const proxy = require('fastify-http-proxy')
 
 module.exports = async function (fastify, opts) {
     fastify.register(replyFrom)
+
+    fastify.register(proxy, {
+        upstream: 'https://news.ycombinator.com/',
+        prefix: '/proxy',
+        async preHandler(request, reply) {
+            if (request.query.token !== 'abc') {
+                throw fastify.httpErrors.unauthorized()
+            }
+        }
+    })
 
     if(dev) {
         fastify.register(fastifyStatic, {
