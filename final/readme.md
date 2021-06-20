@@ -11,6 +11,15 @@ node -e "http.request('http://localhost:3000/bicycle/99', { method: 'post', head
 
 ```
 
+# fastify
+```sh
+mkdir demo
+cd demo
+npm init fastify
+npm install
+npm install fastify-sensible fastify-http-proxy fastify-reply-from got point-to-view handlebars hn-latest-stream fastify-static
+```
+
 # epress
 ```sh
 npm install -g express-generator@4
