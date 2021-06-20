@@ -26,6 +26,10 @@ app.use('/bicycle', bicycleRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
+    if (req.path.match('^/users')){
+        next(createError(403));
+        return;
+    }
     next(createError(404));
 });
 
