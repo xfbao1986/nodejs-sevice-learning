@@ -12,7 +12,6 @@ async function* upper(res) {
 module.exports = async (fastify, opts) => {
     fastify.register(proxy, {
         upstream: 'https://news.ycombinator.com/',
-        prefix: '/proxy',
         async preHandler(request, reply) {
             if (request.query.token !== 'abc') {
                 throw fastify.httpErrors.unauthorized()
