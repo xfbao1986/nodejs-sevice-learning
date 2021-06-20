@@ -10,3 +10,11 @@ node -e "http.request('http://localhost:3000/bicycle/99', { method: 'put', heade
 node -e "http.request('http://localhost:3000/bicycle/99', { method: 'post', headers: {'content-type': 'application/json'}}, (res) => console.log(res.statusCode)).end(JSON.stringify({data: {brand: 'VanMoof', color: 'black'}}))"
 
 ```
+
+# epress
+```sh
+npm install -g express-generator@4
+express --hbs express-web-server
+cd express-web-server
+npm install
+```
