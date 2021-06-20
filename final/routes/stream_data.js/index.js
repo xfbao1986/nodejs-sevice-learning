@@ -1,6 +1,6 @@
 'use strict'
 
-const data = require('../../streamData')
+const data = require('../../stream_data')
 
 module.exports = async (fastify, opts) => {
     fastify.get('/', (req, reply) => {
